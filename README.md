@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LeetCode 刷題追蹤器
 
-## Getting Started
+一個用於系統化記錄和追蹤 LeetCode 刷題歷程的 Web 應用程式。
 
-First, run the development server:
+## 功能特色
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 🎯 核心功能
+- **題目管理**: 新增、編輯和瀏覽 LeetCode 題目
+- **解答記錄**: 儲存多種程式語言的解法和筆記
+- **智能分類**: 支援 Top 150、劍指 Offer 等經典題集分類
+- **標籤系統**: 以演算法類型、難度等進行多維度標籤管理
+- **進度追蹤**: 視覺化顯示刷題進度和統計數據
+- **版本比較**: 記錄同題多次解法，支援程式碼 diff 比較
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 📊 數據追蹤
+- 刷題進度統計
+- 難度分佈分析
+- 語言使用情況
+- 效能數據記錄（執行時間、記憶體使用）
+- 每日練習量追蹤
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🔍 搜尋與篩選
+- 全文搜尋題目標題和筆記
+- 多條件篩選（難度、標籤、分類）
+- 進階查詢功能
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 技術架構
 
-## Learn More
+### 前端
+- **框架**: Next.js 15 (App Router)
+- **語言**: TypeScript
+- **樣式**: Tailwind CSS
+- **UI 組件**: Headless UI + Lucide React
+- **表單處理**: React Hook Form + Zod 驗證
 
-To learn more about Next.js, take a look at the following resources:
+### 後端
+- **資料庫**: PostgreSQL
+- **ORM**: Prisma
+- **部署**: Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 開發工具
+- **代碼品質**: ESLint + TypeScript
+- **版本控制**: Git
+- **套件管理**: npm
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 資料模型
 
-## Deploy on Vercel
+### Problem (題目)
+- LeetCode 題號、標題、難度
+- 題目連結和描述
+- 關聯的標籤和分類
+- 收藏狀態
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Solution (解答)
+- 程式碼和程式語言
+- 執行效能數據
+- 複雜度分析
+- Markdown 筆記
+- 嘗試次數記錄
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Tag & Category (標籤 & 分類)
+- 靈活的標籤系統
+- 結構化的分類管理
+
+### Progress (進度)
+- 每日練習記錄
+- 時間花費追蹤
+- 學習心得筆記
+
+## 快速開始
+
+### 環境需求
+- Node.js 18+ 
+- PostgreSQL 數據庫
+- npm 或 yarn
+
+
+## 使用指南
+
+### 基本流程
+
+1. **新增題目**: 從 LeetCode 添加題目到你的題庫
+2. **記錄解答**: 儲存你的程式碼、思路和筆記
+3. **設置標籤**: 為題目添加演算法分類標籤
+4. **追蹤進度**: 查看統計圖表分析你的學習狀況
+
+### 進階功能
+
+- **版本比較**: 同一題的多個解法可以進行 diff 比較
+- **分類管理**: 建立自定義分類如「面試常考」、「困難題重點」
+- **搜尋功能**: 支援標題、標籤、筆記的全文搜尋
+- **數據匯出**: 備份你的學習記錄
+
+
+### 其他平台
+支援任何支援 Node.js 的 Serverless 平台，如 Netlify、Railway 等。
+
+---
+
+**讓刷題更有系統，讓學習更有效率！** 🚀

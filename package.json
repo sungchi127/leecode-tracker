@@ -6,22 +6,44 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio",
+    "db:seed": "prisma db seed"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.4",
+    "@hookform/resolvers": "^5.1.1",
+    "@prisma/client": "^6.9.0",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@vercel/postgres": "^0.10.0",
+    "clsx": "^2.1.1",
+    "diff2html": "^3.4.51",
+    "dompurify": "^3.2.6",
+    "lucide-react": "^0.515.0",
+    "marked": "^15.0.12",
+    "next": "15.3.3",
+    "prismjs": "^1.30.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.3.3"
+    "react-hook-form": "^7.58.0",
+    "react-syntax-highlighter": "^15.6.1",
+    "tailwind-merge": "^3.3.1",
+    "zod": "^3.25.64"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/dompurify": "^3.2.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
-    "@eslint/eslintrc": "^3"
+    "prisma": "^6.9.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Problem {
+  id          Int       @id @default(autoincrement())
+  lcId        Int       @unique // LeetCode 題號
+  title       String
+  difficulty  String    // Easy/Medium/Hard
+  url         String?   // LeetCode 原題連結
+  description String?   // 題目描述
+  tags        Tag[]     @relation("ProblemTags")
+  categories  Category[] @relation("ProblemCategories")
+  solutions   Solution[]
+  progress    Progress[]
+  starred     Boolean   @default(false) // 收藏功能
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  @@map("problems")
+}
+
+model Solution {
+  id          Int      @id @default(autoincrement())
+  code        String   // 儲存原始碼
+  language    String   // e.g. cpp, py, js, typescript
+  complexity  String?  // 時空複雜度註記
+  runtime     Int?     // 執行時間 (ms)
+  memory      Float?   // 記憶體使用 (MB) 
+  note        String?  // Markdown 筆記
+  attemptNo   Int      // 第幾次刷這題
+  status      String   @default("Accepted") // Accepted, Wrong Answer, etc.
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  problemId   Int
+  problem     Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
+  
+  @@map("solutions")
+}
+
+model Tag {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  color    String?   // 標籤顏色
+  problems Problem[] @relation("ProblemTags")
+  createdAt DateTime @default(now())
+  
+  @@map("tags")
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique // e.g. "Top 150", "劍指 Offer", "Hot 100"
+  description String?
+  problems    Problem[] @relation("ProblemCategories")
+  createdAt   DateTime  @default(now())
+  
+  @@map("categories")
+}
+
+model Progress {
+  id         Int      @id @default(autoincrement())
+  date       DateTime @default(now())
+  problemId  Int
+  solved     Boolean  @default(false)
+  timeSpent  Int?     // 花費時間 (分鐘)
+  notes      String?  // 當日心得
+  problem    Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
+  
+  @@unique([date, problemId])
+  @@map("progress")
+}
